@@ -27,14 +27,23 @@ class Graph:
         self.edges = edges
 
 import random
+import os
 class KColorable_Graph_Generator:
- def __init__(self, seed=42, file_name="edged.txt"):
+ def __init__(self, seed=42, folder_path="data/B_edges/"):
   self.seed = seed
-  self.file_name = file_name
-
- def save_edges(self,Graph,weighted=False):
+  self.folder_path = folder_path
+ def save_edges(self,Graph, n, k, weighted=False):
+  if not os.path.exists(self.folder_path):
+    os.makedirs(self.folder_path) 
+  i = 0
+  file_name = f"graph_n{n}_k{k}_id{i}_edges.txt"
+  full_file_path = os.path.join(self.folder_path, file_name)
+  while os.path.exists(full_file_path):
+    i += 1
+    file_name = f"graph_n{n}_k{k}_id{i}_edges.txt"
+    full_file_path = os.path.join(self.folder_path, file_name)
   try:
-    with open(self.file_name, "w", encoding='ascii') as f:
+    with open(full_file_path, "w", encoding='ascii') as f:
       for edge in Graph.edges:
         if weighted:
           f.write(f"{edge.left_edge.id} {edge.weight} {edge.right_edge.id}\n")
@@ -54,7 +63,7 @@ class KColorable_Graph_Generator:
       list_of_sets.append([])
    counter=0
    for i in range(n):
-      vertex = Vertex(i)
+      vertex = Vertex((i+1))
       if counter <k:
         list_of_sets[counter].append(vertex)
         counter+=1
@@ -96,8 +105,7 @@ class KColorable_Graph_Generator:
    for vertex_set in list_of_sets:
         V.add(frozenset(vertex_set))
    graph = Graph(V, E)
-   self.save_edges(graph)
+   self.save_edges(graph, n, k)
    return graph
-
 kcolorable_graph_generator = KColorable_Graph_Generator(26)
 graph = kcolorable_graph_generator.generate_online_kcolourable_graph(6, 2, 0.95)
