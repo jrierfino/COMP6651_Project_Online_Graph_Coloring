@@ -7,25 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/130D1tPlPC_O3bSt5Nj-wt_U5Y3TsQ1_v
 """
 
-from kcol_graph_gen import KColorableGraphGenerator
-import random
-
-class Vertex:
-    def __init__(self, id):
-        self.id = id
-        self.distance = 0
-        self.predecessor = None
-        self.color=None
-class Edge:
-    def __init__(self, left_edge, right_edge, weight=0):
-        self.left_edge = left_edge
-        self.right_edge = right_edge
-        self.weight = weight
-class Graph:
-    def __init__(self, vertices, edges):
-        self.vertices = vertices
-        self.edges = edges
-
 import random
 import os
 class KColorable_Graph_Generator:
@@ -36,11 +17,11 @@ class KColorable_Graph_Generator:
   if not os.path.exists(self.folder_path):
     os.makedirs(self.folder_path) 
   i = 0
-  file_name = f"graph_n{n}_k{k}_id{i}_edges.txt"
+  file_name = f"graph_n{n}_k{k}_id{i}.edges"
   full_file_path = os.path.join(self.folder_path, file_name)
   while os.path.exists(full_file_path):
     i += 1
-    file_name = f"graph_n{n}_k{k}_id{i}_edges.txt"
+    file_name = f"graph_n{n}_k{k}_id{i}.edges"
     full_file_path = os.path.join(self.folder_path, file_name)
   try:
     with open(full_file_path, "w", encoding='ascii') as f:
@@ -85,7 +66,6 @@ class KColorable_Graph_Generator:
               e1 = Edge(vertex_u, vertex_v)
               e2 = Edge(vertex_v, vertex_u)
               E.add(e1)
-              E.add(e2)
 
         for vertex_set_j in list_of_sets:
           if vertex_set_i!=vertex_set_j:
@@ -100,7 +80,7 @@ class KColorable_Graph_Generator:
                   e1 = Edge(vertex_u, vertex_v)
                   e2 = Edge(vertex_v, vertex_u)
                   E.add(e1)
-                  E.add(e2)
+
    V = set()
    for vertex_set in list_of_sets:
         V.add(frozenset(vertex_set))
