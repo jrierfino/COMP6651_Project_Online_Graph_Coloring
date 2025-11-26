@@ -1,6 +1,8 @@
 import random
 import os
 from collections import deque
+from numbers import Integral, Real
+import math
 
 
 class Vertex:
@@ -127,8 +129,21 @@ class KColorable_Graph_Generator:
           one neighbor in S_j.
         - Additional edges between sets are added with probability p.
         """
-        assert k > 0, "k must be positive"
-        assert n >= k, "n must be at least k so each colour class is non-empty"
+        if not isinstance(n, Integral) or isinstance(n, bool):
+            raise TypeError("n must be an integer.")
+        if not isinstance(k, Integral) or isinstance(k, bool):
+            raise TypeError("k must be an integer.")
+        if not (isinstance(p, (int, float)) and not isinstance(p, bool)):
+            raise TypeError("p must be a real number.")
+
+        if n < 1:
+            raise ValueError("n must be >= 1.")
+        if k < 1:
+            raise ValueError("k must be >= 1.")
+        if k > n:
+            raise ValueError("k must be <= n.")
+        if not (0.0 <= p <= 1.0):
+            raise ValueError("p must be between 0 and 1.")
 
         random.seed(self.seed)
 
