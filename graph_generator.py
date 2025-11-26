@@ -35,6 +35,27 @@ class KColorable_Graph_Generator:
     print(f"Error: Could not encode data to ASCII. Contains non-ASCII characters: {e}")
 
  def generate_online_kcolourable_graph(self, n, k,p=0.5):
+   if type(n)==int:
+     print(f"Invalid input n must be an int")
+     return None
+   if type(k)==int:
+     print(f"Invalid input k must be an int")
+     return None
+   if type(p)==float:
+     print(f"Invalid input k must be an int")
+     return None
+   if n<=0 :
+     print(f"Invalid input n:{n} cannot be less then or equal to 0")
+     return None
+   if k<=0:
+     print(f"Invalid input k:{k} cannot be less then or equal to 0")
+     return None
+   if p<0 or p>1:
+     print(f"Invalid input p has to be between 0 and 1")
+     return None
+   if k>n:
+     print(f"Invalid input n has to be greater then k")
+     return None
    random.seed(self.seed)
    list_of_sets = []
    E = set()
