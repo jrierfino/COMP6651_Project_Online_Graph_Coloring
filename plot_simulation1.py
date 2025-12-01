@@ -68,4 +68,4 @@ plt.tight_layout()
 plt.savefig(os.path.join(OUTPUT_DIR, "plot_comparison_k2.png"))
 plt.close()
 
-print(f"All plots saved in '{OUTPUT_DIR}'")
+print(f"Simulation I plots saved in '{OUTPUT_DIR}'")
