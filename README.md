@@ -34,6 +34,19 @@ COMP6651 project for studying the competitive performance of online graph colori
    ```
    Produces the same summary columns as Simulation I but only for the LUF ordering variant of First-Fit, saving them to `simulation2_results.csv` (and the companion Excel file if you export it).
 
+
+4. **Run plot_simulation1.py (Plots for Simulation I).**
+   ```bash
+   python plot_simulation1.py
+   ```
+   Produces the plots for Simulation I and saves them to `/plots/simulation1`.
+   
+5. **Run plot_simulation2.py (Plots for Simulation II).**
+   ```bash
+   python plot_simulation2.py
+   ```
+   Produces the plots for Simulation II and saves them to `/plots/simulation2`.
+
 ## Tips
 
 - The scripts assume the directory layout under `data/B_edges` exactly matches `graph_n{n}_k{k}`. If you change the generator output path, update `BASE_DIR` in both simulations.
