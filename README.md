@@ -9,6 +9,8 @@ COMP6651 project for studying the competitive performance of online graph colori
 - `generate_graphs.py` – batch generator that saves `*.edges` files under `data/B_edges/graph_n{n}_k{k}`.
 - `simulation1.py` – runs First-Fit for `k ∈ {2,3,4}` and CBIP for `k=2`, writing aggregates to `simulation1_results.csv`.
 - `simulation2.py` – runs the FirstFit-LUF heuristic for the same input set and writes `simulation2_results.csv`.
+- `plot_simulation1.py` – produces the plots for the Simulation I results and saves them in `/plots/simulation1`.
+- `plot_simulation2.py` – produces the plots for the Simulation II results and saves them in `/plots/simulation2`.
 
 ## Requirements
 
